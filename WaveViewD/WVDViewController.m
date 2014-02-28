@@ -85,6 +85,8 @@
 - (IBAction)pauseRecording:(id)sender
 {
     [_recorder pause];
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 - (void)waveUpdate
