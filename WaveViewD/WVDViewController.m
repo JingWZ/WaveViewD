@@ -51,6 +51,10 @@
 
 - (void)initAudioRecorder
 {
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [session setActive:YES withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
+    
     NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentPath = [directories objectAtIndex:0];
     NSString *recordPath = [documentPath stringByAppendingPathComponent:@"record.m4a"];
